@@ -11,6 +11,23 @@
 
 <body>
     <h1>Page render using express</h1>
+
+    <div>
+        <ul>
+            <% for(let i of locals.contact_log){ %>
+                <li>
+                    <%= i.name %>&nbsp<%= i.phone %>
+                </li>
+                <%}%>
+        </ul>
+    </div>
+
+    <form action="/create-contact" method="post">
+        <input type="text" name="name" placeholder="name" required>
+        <input type="number" name="phone" placeholder="phone" required>
+        <button type="submit">Add contact</button>
+    </form>
+
 </body>
 
 </html>

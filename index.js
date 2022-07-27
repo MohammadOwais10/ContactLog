@@ -23,7 +23,18 @@ var contactLog = [
 
 app.get("/", (request, response) => {
   console.log(request.url);
-  return response.render("home", { title: "render" });
+  return response.render("home", {
+    title: "render",
+    contact_log: contactLog,
+  });
+});
+
+app.get("/addContact", (req, res) => {
+  return res.render("addContact", {});
+});
+
+app.post("/create-contact", (request, response) => {
+  return response.redirect("/addContact");
 });
 
 app.listen(port, (error) => {
