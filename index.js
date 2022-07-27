@@ -5,6 +5,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded());
 
 var contactLog = [
   {
@@ -34,7 +35,9 @@ app.get("/addContact", (req, res) => {
 });
 
 app.post("/create-contact", (request, response) => {
-  return response.redirect("/addContact");
+  //return response.redirect("/addContact");
+  contactLog.push({ name: request.body.name, phone: request.body.phone });
+  return response.redirect("back");
 });
 
 app.listen(port, (error) => {
