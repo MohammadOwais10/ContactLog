@@ -30,6 +30,18 @@ app.get("/", (req, res) => {
   return res.render("home", options);
 });
 
+app.get("/delete-contact/:phone", (req, res) => {
+  console.log(req.params);
+  let phone = req.params.phone;
+  let required_contact_index = contactLog.findIndex((contact) => {
+    return contact.phone == phone;
+  });
+  if (required_contact_index != -1) {
+    contactLog.splice(required_contact_index, 1);
+  }
+  return res.redirect("back");
+});
+
 app.post("/create-contact", (req, res) => {
   contactLog.push(req.body);
   return res.redirect("back");

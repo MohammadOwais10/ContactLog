@@ -28,7 +28,9 @@
             <% for(let i of locals.contact_log){ %>
                 <li>
                     <div>
-                        <i class="fas fa-user-alt"></i>
+                        <a href="/delete-contact/<%= i.phone %>">
+                            <i class="far fa-times-circle"></i>
+                        </a>
                         <%= i.name %>
                     </div>
                     <div>
